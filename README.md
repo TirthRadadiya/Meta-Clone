@@ -34,8 +34,7 @@ This project aims to provide a practical demonstration of full-stack development
 
 ### Other Tools  
 - **JWT**: For secure user authentication.  
-- **Cloudinary** (Optional): For managing and storing images.  
-- **Socket.IO** (Optional): For real-time updates like live notifications.  
+- **Cloudinary** (Optional): For managing and storing images.
 
 ## Installation
 
