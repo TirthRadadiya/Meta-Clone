@@ -11,6 +11,7 @@ export default function ImagePreview({
   setError,
 }) {
   const imageInputRef = useRef(null);
+
   const handleImages = (e) => {
     let files = Array.from(e.target.files);
     files.forEach((img) => {
@@ -39,6 +40,7 @@ export default function ImagePreview({
       }
     });
   };
+
   return (
     <div className="overflow_a scrollbar">
       <EmojiPickerBackgrounds text={text} user={user} setText={setText} type2 />

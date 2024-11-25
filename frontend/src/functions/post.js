@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const createPost = async (
   type,
   background,
@@ -28,6 +29,7 @@ export const createPost = async (
     return error.response.data.message;
   }
 };
+
 export const reactPost = async (postId, react, token) => {
   try {
     const { data } = await axios.put(
@@ -47,6 +49,7 @@ export const reactPost = async (postId, react, token) => {
     return error.response.data.message;
   }
 };
+
 export const getReacts = async (postId, token) => {
   try {
     const { data } = await axios.get(
@@ -63,6 +66,7 @@ export const getReacts = async (postId, token) => {
     return error.response.data.message;
   }
 };
+
 export const comment = async (postId, comment, image, token) => {
   try {
     const { data } = await axios.put(
@@ -84,6 +88,7 @@ export const comment = async (postId, comment, image, token) => {
     return error.response.data.message;
   }
 };
+
 export const savePost = async (postId, token) => {
   try {
     const { data } = await axios.put(
@@ -101,6 +106,7 @@ export const savePost = async (postId, token) => {
     return error.response.data.message;
   }
 };
+
 export const deletePost = async (postId, token) => {
   try {
     const { data } = await axios.delete(

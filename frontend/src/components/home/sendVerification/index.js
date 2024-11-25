@@ -1,9 +1,11 @@
 import { useState } from "react";
 import "./style.css";
 import axios from "axios";
+
 export default function SendVerification({ user }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
   const sendVerificationLink = async () => {
     try {
       const { data } = await axios.post(
@@ -20,6 +22,7 @@ export default function SendVerification({ user }) {
       setError(error.response.data.message);
     }
   };
+
   return (
     <div className="send_verification">
       <span>

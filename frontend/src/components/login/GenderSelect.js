@@ -10,6 +10,7 @@ export default function GenderSelect({ handleRegisterChange, genderError }) {
   const view3 = useMediaQuery({
     query: "(min-width: 1170px)",
   });
+  
   return (
     <div
       className="reg_grid"

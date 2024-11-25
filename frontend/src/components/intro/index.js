@@ -4,14 +4,17 @@ import "./style.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import EditDetails from "./EditDetails";
+
 export default function Intro({ detailss, visitor, setOthername }) {
   const { user } = useSelector((state) => ({ ...state }));
   const [details, setDetails] = useState();
   const [visible, setVisible] = useState(false);
+
   useEffect(() => {
     setDetails(detailss);
     setInfos(detailss);
   }, [detailss]);
+
   const initial = {
     bio: details?.bio ? details.bio : "",
     otherName: details?.otherName ? details.otherName : "",
@@ -24,6 +27,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
     relationship: details?.relationship ? details.relationship : "",
     instagram: details?.instagram ? details.instagram : "",
   };
+
   const [infos, setInfos] = useState(initial);
   const [showBio, setShowBio] = useState(false);
   const [max, setMax] = useState(infos?.bio ? 100 - infos?.bio.length : 100);
@@ -49,11 +53,13 @@ export default function Intro({ detailss, visitor, setOthername }) {
       console.log(error.response.data.message);
     }
   };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setInfos({ ...infos, [name]: value });
     setMax(100 - e.target.value.length);
   };
+
   return (
     <div className="profile_card">
       <div className="profile_card_header">Intro</div>

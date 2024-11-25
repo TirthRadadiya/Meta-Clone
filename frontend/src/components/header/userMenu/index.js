@@ -5,10 +5,12 @@ import HelpSupport from "./HelpSupport";
 import SettingsPrivacy from "./SettingsPrivacy";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
+
 export default function UserMenu({ user }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(0);
+
   const logout = () => {
     Cookies.set("user", "");
     dispatch({
@@ -16,6 +18,7 @@ export default function UserMenu({ user }) {
     });
     navigate("/login");
   };
+
   return (
     <div className="mmenu">
       {visible === 0 && (

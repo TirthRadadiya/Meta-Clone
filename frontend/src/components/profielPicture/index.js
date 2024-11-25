@@ -1,9 +1,8 @@
 import { useRef, useState } from "react";
 import "./style.css";
 import UpdateProfilePicture from "./UpdateProfilePicture";
-import useOnClickOutside from "../../helpers/clickOutside";
-import { photosReducer } from "../../functions/reducers";
 import { useSelector } from "react-redux";
+
 export default function ProfilePicture({ username, setShow, pRef, photos }) {
   const popup = useRef(null);
   const { user } = useSelector((state) => ({ ...state }));
@@ -11,6 +10,7 @@ export default function ProfilePicture({ username, setShow, pRef, photos }) {
   const refInput = useRef(null);
   const [image, setImage] = useState("");
   const [error, setError] = useState("");
+
   const handleImage = (e) => {
     let file = e.target.files[0];
     if (

@@ -8,6 +8,7 @@ import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
 import { comment, getReacts, reactPost } from "../../functions/post";
 import Comment from "./Comment";
+
 export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
@@ -57,10 +58,13 @@ export default function Post({ post, user, profile }) {
       }
     }
   };
+
   const showMore = () => {
     setCount((prev) => prev + 3);
   };
+
   const postRef = useRef(null);
+
   return (
     <div
       className="post"

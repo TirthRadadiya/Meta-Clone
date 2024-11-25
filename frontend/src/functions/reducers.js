@@ -16,6 +16,7 @@ export function postsReducer(state, action) {
       return state;
   }
 }
+
 export function profileReducer(state, action) {
   switch (action.type) {
     case "PROFILE_REQUEST":
@@ -40,6 +41,7 @@ export function profileReducer(state, action) {
       return state;
   }
 }
+
 export function photosReducer(state, action) {
   switch (action.type) {
     case "PHOTOS_REQUEST":
@@ -58,6 +60,7 @@ export function photosReducer(state, action) {
       return state;
   }
 }
+
 export function friendspage(state, action) {
   switch (action.type) {
     case "FRIENDS_REQUEST":

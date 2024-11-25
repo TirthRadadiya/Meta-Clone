@@ -14,12 +14,45 @@ export default function Cover({ cover, visitor, photos }) {
   const [coverPicture, setCoverPicture] = useState("");
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
   const { user } = useSelector((state) => ({ ...state }));
   const menuRef = useRef(null);
   const refInput = useRef(null);
   const cRef = useRef(null);
+
   useClickOutside(menuRef, () => setShowCoverMenu(false));
-  const [error, setError] = useState("");
+
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
+  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
+    setCroppedAreaPixels(croppedAreaPixels);
+  }, []);
+
+  const getCroppedImage = useCallback(
+    async (show) => {
+      try {
+        const img = await getCroppedImg(coverPicture, croppedAreaPixels);
+        if (show) {
+          setZoom(1);
+          setCrop({ x: 0, y: 0 });
+          setCoverPicture(img);
+        } else {
+          return img;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [croppedAreaPixels]
+  );
+  const coverRef = useRef(null);
+  const [width, setWidth] = useState();
+
+  useEffect(() => {
+    setWidth(coverRef.current.clientWidth);
+  }, [window.innerWidth]);
+
   const handleImage = (e) => {
     let file = e.target.files[0];
     if (
@@ -43,34 +76,6 @@ export default function Cover({ cover, visitor, photos }) {
       setCoverPicture(event.target.result);
     };
   };
-  const [crop, setCrop] = useState({ x: 0, y: 0 });
-  const [zoom, setZoom] = useState(1);
-  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const onCropComplete = useCallback((croppedArea, croppedAreaPixels) => {
-    setCroppedAreaPixels(croppedAreaPixels);
-  }, []);
-  const getCroppedImage = useCallback(
-    async (show) => {
-      try {
-        const img = await getCroppedImg(coverPicture, croppedAreaPixels);
-        if (show) {
-          setZoom(1);
-          setCrop({ x: 0, y: 0 });
-          setCoverPicture(img);
-        } else {
-          return img;
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    [croppedAreaPixels]
-  );
-  const coverRef = useRef(null);
-  const [width, setWidth] = useState();
-  useEffect(() => {
-    setWidth(coverRef.current.clientWidth);
-  }, [window.innerWidth]);
 
   const updateCoverPicture = async () => {
     try {
@@ -111,6 +116,7 @@ export default function Cover({ cover, visitor, photos }) {
       setError(error.response.data.message);
     }
   };
+
   return (
     <div className="profile_cover" ref={coverRef}>
       {coverPicture && (

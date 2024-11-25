@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Picker from "emoji-picker-react";
 import { useMediaQuery } from "react-responsive";
+
 export default function EmojiPickerBackgrounds({
   text,
   user,
@@ -18,6 +19,7 @@ export default function EmojiPickerBackgrounds({
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
+
   const handleEmoji = (e, { emoji }) => {
     const ref = textRef.current;
     ref.focus();
@@ -27,6 +29,7 @@ export default function EmojiPickerBackgrounds({
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
+
   const postBackgrounds = [
     "../../../images/postbackgrounds/1.jpg",
     "../../../images/postbackgrounds/2.jpg",
@@ -38,19 +41,23 @@ export default function EmojiPickerBackgrounds({
     "../../../images/postbackgrounds/8.jpg",
     "../../../images/postbackgrounds/9.jpg",
   ];
+
   const backgroundHanlder = (i) => {
     bgRef.current.style.backgroundImage = `url(${postBackgrounds[i]})`;
     setBackground(postBackgrounds[i]);
     bgRef.current.classList.add("bgHandler");
   };
+
   const removeBackground = (i) => {
     bgRef.current.style.backgroundImage = "";
     setBackground("");
     bgRef.current.classList.remove("bgHandler");
   };
+
   const sm = useMediaQuery({
     query: "(max-width:550px)",
   });
+
   return (
     <div className={type2 ? "images_input" : ""}>
       <div className={!type2 ? "flex_center" : ""} ref={bgRef}>

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default function DisplayAccessibility({ setVisible }) {
   const dispatch = useDispatch();
   const { darkTheme } = useSelector((state) => ({ ...state }));
+
   return (
     <div className="absolute_wrap">
       <div className="absolute_wrap_header">

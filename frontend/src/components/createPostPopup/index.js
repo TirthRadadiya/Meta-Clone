@@ -1,16 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./style.css";
-import Picker from "emoji-picker-react";
 import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
 import useClickOutside from "../../helpers/clickOutside";
 import { createPost } from "../../functions/post";
 import PulseLoader from "react-spinners/PulseLoader";
-import { useDispatch } from "react-redux";
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
+
 export default function CreatePostPopup({
   user,
   setVisible,
@@ -28,6 +27,7 @@ export default function CreatePostPopup({
   useClickOutside(popup, () => {
     setVisible(false);
   });
+
   const postSubmit = async () => {
     if (background) {
       setLoading(true);
@@ -110,6 +110,7 @@ export default function CreatePostPopup({
       console.log("nothing");
     }
   };
+  
   return (
     <div className="blur">
       <div className="postBox" ref={popup}>

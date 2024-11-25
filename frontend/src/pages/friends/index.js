@@ -6,6 +6,7 @@ import { friendspage } from "../../functions/reducers";
 import { getFriendsPageInfos } from "../../functions/user";
 import Card from "./Card";
 import "./style.css";
+
 export default function Friends() {
   const { user } = useSelector((state) => ({ ...state }));
   const { type } = useParams();
@@ -15,9 +16,11 @@ export default function Friends() {
     data: {},
     error: "",
   });
+
   useEffect(() => {
     getData();
   }, []);
+
   const getData = async () => {
     dispatch({ type: "FRIENDS_REQUEST" });
     const data = await getFriendsPageInfos(user.token);

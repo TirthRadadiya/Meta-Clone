@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const updateprofilePicture = async (url, token) => {
   try {
     const { data } = await axios.put(
@@ -17,6 +18,7 @@ export const updateprofilePicture = async (url, token) => {
     return error.response.data.message;
   }
 };
+
 export const updateCover = async (url, token) => {
   try {
     const { data } = await axios.put(
@@ -35,6 +37,7 @@ export const updateCover = async (url, token) => {
     return error.response.data.message;
   }
 };
+
 export const addFriend = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -52,6 +55,7 @@ export const addFriend = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const cancelRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -69,6 +73,7 @@ export const cancelRequest = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const follow = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -87,6 +92,7 @@ export const follow = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const unfollow = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -104,6 +110,7 @@ export const unfollow = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const acceptRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -121,6 +128,7 @@ export const acceptRequest = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const unfriend = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -138,6 +146,7 @@ export const unfriend = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const deleteRequest = async (id, token) => {
   try {
     const { data } = await axios.put(
@@ -155,6 +164,7 @@ export const deleteRequest = async (id, token) => {
     return error.response.data.message;
   }
 };
+
 export const search = async (searchTerm, token) => {
   try {
     const { data } = await axios.post(
@@ -172,6 +182,7 @@ export const search = async (searchTerm, token) => {
     return error.response.data.message;
   }
 };
+
 export const addToSearchHistory = async (searchUser, token) => {
   try {
     const { data } = await axios.put(
@@ -189,6 +200,7 @@ export const addToSearchHistory = async (searchUser, token) => {
     return error.response.data.message;
   }
 };
+
 export const getSearchHistory = async (token) => {
   try {
     const { data } = await axios.get(
@@ -205,6 +217,7 @@ export const getSearchHistory = async (token) => {
     return error.response.data.message;
   }
 };
+
 export const removeFromSearch = async (searchUser, token) => {
   try {
     const { data } = await axios.put(
@@ -222,6 +235,7 @@ export const removeFromSearch = async (searchUser, token) => {
     return error.response.data.message;
   }
 };
+
 export const getFriendsPageInfos = async (token) => {
   try {
     const { data } = await axios.get(

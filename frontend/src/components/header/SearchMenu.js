@@ -8,6 +8,7 @@ import {
   search,
 } from "../../functions/user";
 import { Link } from "react-router-dom";
+
 export default function SearchMenu({ color, setShowSearchMenu, token }) {
   const [iconVisible, setIconVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -21,13 +22,16 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
   useEffect(() => {
     getHistory();
   }, []);
+
   const getHistory = async () => {
     const res = await getSearchHistory(token);
     setSearchHistory(res);
   };
+
   useEffect(() => {
     input.current.focus();
   }, []);
+
   const searchHandler = async () => {
     if (searchTerm === "") {
       setResults("");
@@ -36,14 +40,17 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
       setResults(res);
     }
   };
+
   const addToSearchHistoryHandler = async (searchUser) => {
     const res = await addToSearchHistory(searchUser, token);
     getHistory();
   };
+
   const handleRemove = async (searchUser) => {
     removeFromSearch(searchUser, token);
     getHistory();
   };
+
   return (
     <div className="header_left search_area scrollbar" ref={menu}>
       <div className="search_wrap">

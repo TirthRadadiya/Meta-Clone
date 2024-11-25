@@ -4,6 +4,7 @@ import { comment } from "../../functions/post";
 import { uploadImages } from "../../functions/uploadImages";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { ClipLoader } from "react-spinners";
+
 export default function CreateComment({ user, postId, setComments, setCount }) {
   const [picker, setPicker] = useState(false);
   const [text, setText] = useState("");
@@ -16,6 +17,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
   useEffect(() => {
     textRef.current.selectionEnd = cursorPosition;
   }, [cursorPosition]);
+
   const handleEmoji = (e, { emoji }) => {
     const ref = textRef.current;
     ref.focus();
@@ -25,6 +27,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
     setText(newText);
     setCursorPosition(start.length + emoji.length);
   };
+
   const handleImage = (e) => {
     let file = e.target.files[0];
     if (
@@ -46,6 +49,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
       setCommentImage(event.target.result);
     };
   };
+
   const handleComment = async (e) => {
     if (e.key === "Enter") {
       if (commentImage != "") {
@@ -80,6 +84,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
       }
     }
   };
+
   return (
     <div className="create_comment_wrap">
       <div className="create_comment">

@@ -6,6 +6,7 @@ export default function OldCovers({ photos, setCoverPicture, setShow }) {
   const { user } = useSelector((state) => ({ ...state }));
   const Ref = useRef(null);
   useClickOutside(Ref, () => setShow(false));
+
   return (
     <div className="blur">
       <div className="postBox selectCoverBox" ref={Ref}>

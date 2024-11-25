@@ -20,6 +20,7 @@ import CreatePostPopup from "../../components/createPostPopup";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { HashLoader } from "react-spinners";
+
 export default function Profile({ getAllPosts }) {
   const [visible, setVisible] = useState(false);
   const { username } = useParams();
@@ -33,6 +34,7 @@ export default function Profile({ getAllPosts }) {
     profile: {},
     error: "",
   });
+
   useEffect(() => {
     getProfile();
   }, [userName]);
@@ -93,6 +95,7 @@ export default function Profile({ getAllPosts }) {
   const [height, setHeight] = useState();
   const [leftHeight, setLeftHeight] = useState();
   const [scrollHeight, setScrollHeight] = useState();
+
   useEffect(() => {
     setHeight(profileTop.current.clientHeight + 300);
     setLeftHeight(leftSide.current.clientHeight);
@@ -101,9 +104,11 @@ export default function Profile({ getAllPosts }) {
       window.addEventListener("scroll", getScroll, { passive: true });
     };
   }, [loading, scrollHeight]);
+
   const check = useMediaQuery({
     query: "(min-width:901px)",
   });
+
   const getScroll = () => {
     setScrollHeight(window.pageYOffset);
   };

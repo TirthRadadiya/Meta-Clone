@@ -10,11 +10,9 @@ import {
   unfollow,
   unfriend,
 } from "../../functions/user";
+
 export default function Friendship({ friendshipp, profileid }) {
   const [friendship, setFriendship] = useState(friendshipp);
-  useEffect(() => {
-    setFriendship(friendshipp);
-  }, [friendshipp]);
   const [friendsMenu, setFriendsMenu] = useState(false);
   const [respondMenu, setRespondMenu] = useState(false);
   const menu = useRef(null);
@@ -22,22 +20,31 @@ export default function Friendship({ friendshipp, profileid }) {
   useClickOutside(menu, () => setFriendsMenu(false));
   useClickOutside(menu1, () => setRespondMenu(false));
   const { user } = useSelector((state) => ({ ...state }));
+
+  useEffect(() => {
+    setFriendship(friendshipp);
+  }, [friendshipp]);
+
   const addFriendHandler = async () => {
     setFriendship({ ...friendship, requestSent: true, following: true });
     await addFriend(profileid, user.token);
   };
+
   const cancelRequestHandler = async () => {
     setFriendship({ ...friendship, requestSent: false, following: false });
     await cancelRequest(profileid, user.token);
   };
+
   const followHandler = async () => {
     setFriendship({ ...friendship, following: true });
     await follow(profileid, user.token);
   };
+
   const unfollowHandler = async () => {
     setFriendship({ ...friendship, following: false });
     await unfollow(profileid, user.token);
   };
+
   const acceptRequestHanlder = async () => {
     setFriendship({
       ...friendship,
@@ -48,6 +55,7 @@ export default function Friendship({ friendshipp, profileid }) {
     });
     await acceptRequest(profileid, user.token);
   };
+
   const unfriendHandler = async () => {
     setFriendship({
       ...friendship,
@@ -58,6 +66,7 @@ export default function Friendship({ friendshipp, profileid }) {
     });
     await unfriend(profileid, user.token);
   };
+  
   const deleteRequestHanlder = async () => {
     setFriendship({
       ...friendship,

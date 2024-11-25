@@ -19,6 +19,7 @@ export default function PostMenu({
   const [test, setTest] = useState(postUserId === userId ? true : false);
   const menu = useRef(null);
   useOnClickOutside(menu, () => setShowMenu(false));
+
   const saveHandler = async () => {
     savePost(postId, token);
     if (checkSaved) {
@@ -27,17 +28,20 @@ export default function PostMenu({
       setCheckSaved(true);
     }
   };
+
   const downloadImages = async () => {
     images.map((img) => {
       saveAs(img.url, "image.jpg");
     });
   };
+
   const deleteHandler = async () => {
     const res = await deletePost(postId, token);
     if (res.status === "ok") {
       postRef.current.remove();
     }
   };
+
   return (
     <ul className="post_menu" ref={menu}>
       {test && <MenuItem icon="pin_icon" title="Pin Post" />}

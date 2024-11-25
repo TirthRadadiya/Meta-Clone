@@ -12,15 +12,18 @@ const loginInfos = {
   email: "",
   password: "",
 };
+
 export default function LoginForm({ setVisible }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
+
   const handleLoginChange = (e) => {
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
+
   const loginValidation = Yup.object({
     email: Yup.string()
       .required("Email address is required.")
@@ -28,8 +31,10 @@ export default function LoginForm({ setVisible }) {
       .max(100),
     password: Yup.string().required("Password is required"),
   });
+
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+
   const loginSubmit = async () => {
     try {
       setLoading(true);
@@ -48,6 +53,7 @@ export default function LoginForm({ setVisible }) {
       setError(error.response.data.message);
     }
   };
+
   return (
     <div className="login_wrap">
       <div className="login_1">

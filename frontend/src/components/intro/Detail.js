@@ -13,6 +13,7 @@ export default function Detail({
   rel,
 }) {
   const [show, setShow] = useState(false);
+
   return (
     <div>
       <div className="add_details_flex " onClick={() => setShow(true)}>

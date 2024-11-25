@@ -21,9 +21,11 @@ function App() {
     posts: [],
     error: "",
   });
+
   useEffect(() => {
     getAllPosts();
   }, []);
+
   const getAllPosts = async () => {
     try {
       dispatch({
@@ -48,6 +50,7 @@ function App() {
       });
     }
   };
+
   return (
     <div className={darkTheme && "dark"}>
       {visible && (
