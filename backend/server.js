@@ -14,6 +14,7 @@ app.use(
     useTempFiles: true,
   })
 );
+
 //routes
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
